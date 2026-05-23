@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">AlarmRem</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_senha">Senha</string>
+    <string name="btn_entrar">Entrar</string>
+    <string name="link_cadastro">Não tem conta? Cadastre-se agora</string>
+    <string name="titulo_login">Bem-Vindo ao AlarmRem</string>
+
+    <string name="titulo_cadastro">Cadastro</string>
+    <string name="hint_nome">Nome Completo</string>
+    <string name="hint_confirmar_senha">Confirmar senha</string>
+    <string name="btn_cadastrar">Cadastrar</string>
+    <string name="link_login">Já tem conta? Faça login</string>
+
+    <string name="titulo_home">Meus Alarmes</string>
+    <string name="btn_adicionar_alarme">Adicionar Alarme</string>
+    <string name="btn_perfil">Meu perfil</string>
+    <string name="bemvindo_usuario">Olá, bem-vindo!</string>
+
+    <string name="titulo_perfil">Meu Perfil</string>
+    <string name="label_nome">Nome:</string>
+    <string name="label_email">Email:</string>
+    <string name="btn_sair">Sair</string>
+</resources>

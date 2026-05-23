@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="@dimen/padding_grande"
+    android:background="@color/fundoTela">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="@dimen/padding_grande">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_pessoa"
+            android:layout_marginEnd="8dp"
+            app:tint="@color/verdePrimario" />
+
+        <TextView
+            android:id="@+id/tvTituloCadastro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/titulo_cadastro"
+            android:textColor="@color/verdePrimario"
+            android:textSize="@dimen/texto_titulo"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/etNome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/padding_medio"
+        android:ems="10"
+        android:hint="@string/hint_nome"
+        android:inputType="text|textPersonName"
+        android:padding="@dimen/padding_medio"
+        android:textColor="@color/textoEscuro"
+        android:textColorHint="@color/black"
+        android:textSize="@dimen/texto_normal" />
+
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/padding_medio"
+        android:ems="10"
+        android:hint="@string/hint_email"
+        android:inputType="textEmailAddress"
+        android:padding="@dimen/padding_medio"
+        android:textColor="@color/textoEscuro"
+        android:textColorHint="@color/black"
+        android:textSize="@dimen/texto_normal" />
+
+    <EditText
+        android:id="@+id/etSenha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/padding_medio"
+        android:ems="10"
+        android:hint="@string/hint_senha"
+        android:inputType="textPassword"
+        android:padding="@dimen/padding_medio"
+        android:textColor="@color/textoEscuro"
+        android:textColorHint="@color/black"
+        android:textSize="@dimen/texto_normal" />
+
+    <EditText
+        android:id="@+id/etConfirmarSenha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/padding_grande"
+        android:ems="10"
+        android:hint="@string/hint_confirmar_senha"
+        android:inputType="textPassword"
+        android:padding="@dimen/padding_medio"
+        android:textColor="@color/textoEscuro"
+        android:textColorHint="@color/black"
+        android:textSize="@dimen/texto_normal" />
+
+    <Button
+        android:id="@+id/btnCadastrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/padding_medio"
+        android:backgroundTint="@color/verdePrimario"
+        android:text="@string/btn_cadastrar"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/tvFacaLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/padding_pequeno"
+        android:text="@string/link_login"
+        android:textColor="@color/verdePrimario"
+        android:textSize="@dimen/texto_pequeno" />
+
+</LinearLayout>

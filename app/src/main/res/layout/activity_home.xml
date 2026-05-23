@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/fundoTela"
+    android:padding="@dimen/padding_grande">
+
+    <TextView
+        android:id="@+id/tvBemvindo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/padding_pequeno"
+        android:text="@string/bemvindo_usuario"
+        android:textColor="@color/textoSecundario"
+        android:textSize="@dimen/texto_normal" />
+
+    <TextView
+        android:id="@+id/tvTituloHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/padding_grande"
+        android:text="@string/titulo_home"
+        android:textColor="@color/verdePrimario"
+        android:textSize="@dimen/texto_titulo"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnAdicionarAlarme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/padding_medio"
+        android:backgroundTint="@color/verdePrimario"
+        android:text="@string/btn_adicionar_alarme"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/btnPerfil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/padding_medio"
+        android:backgroundTint="@color/verdeClaro"
+        android:text="@string/btn_perfil"
+        android:textColor="@color/verdePrimario" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewAlarmes"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="16dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+</LinearLayout>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="verdePrimario">#2E7D32</color>
+    <color name="verdeClaro">#A5D6A7</color>
+
+    <color name="fundoTela">#F5F5F5</color>
+    <color name="fundoInput">#FFFFFFFF</color>
+    <color name="bordaInput">#BDBDBD</color>
+
+    <color name="textoEscuro">#212121</color>
+    <color name="textoSecundario">#757575</color>
+    <color name="textoHint">#616161</color>
+
+    <color name="vermelhoBotao">#D32F2F</color>
+</resources>

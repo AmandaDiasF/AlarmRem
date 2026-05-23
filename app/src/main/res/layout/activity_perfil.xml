@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/fundoTela"
+    android:padding="@dimen/padding_grande">
+
+    <TextView
+        android:id="@+id/tvTituloPerfil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/padding_grande"
+        android:text="@string/titulo_perfil"
+        android:textColor="@color/verdePrimario"
+        android:textSize="@dimen/texto_titulo"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvLabelNome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/padding_pequeno"
+        android:text="@string/label_nome"
+        android:textColor="@color/textoSecundario"
+        android:textSize="@dimen/texto_normal" />
+
+    <TextView
+        android:id="@+id/tvNomeUsuario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/padding_medio"
+        android:text="Nome do usuário"
+        android:textColor="@color/textoEscuro"
+        android:textSize="@dimen/texto_normal"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvLabelEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/padding_pequeno"
+        android:text="@string/label_email"
+        android:textColor="@color/textoSecundario"
+        android:textSize="@dimen/texto_normal" />
+
+    <TextView
+        android:id="@+id/tvEmailUsuario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/padding_grande"
+        android:text="email@exemplo.com"
+        android:textColor="@color/textoEscuro"
+        android:textSize="@dimen/texto_normal"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnSair"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/padding_medio"
+        android:backgroundTint="@color/vermelhoBotao"
+        android:text="@string/btn_sair"
+        android:textColor="@color/white" />
+
+</LinearLayout>

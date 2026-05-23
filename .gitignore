@@ -1,0 +1,51 @@
+# ===== SO / editor =====
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# ===== Gradle / Kotlin =====
+.gradle/
+.kotlin/
+build/
+*/build/
+local.properties
+
+# ===== Android Studio / IntelliJ =====
+*.iml
+.idea/
+*.ipr
+*.iws
+out/
+.navigation/
+
+# ===== Capturas e caches =====
+captures/
+.externalNativeBuild/
+.cxx/
+
+# ===== Artefatos de build Android =====
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+output-metadata.json
+
+# ===== Logs e profiling =====
+*.log
+*.hprof
+
+# ===== Assinatura e segredos =====
+*.jks
+*.keystore
+keystore.properties
+signing.properties
+
+# ===== Google Services (decida se versiona) =====
+# google-services.json
+
+# ===== Outras pastas de lint / ferramentas =====
+lint/
+freeline/
+fastlane/
