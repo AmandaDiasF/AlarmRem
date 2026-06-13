@@ -31,10 +31,12 @@ class CadastroActivity : AppCompatActivity() {
                 Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+
             if (senha != confirmar) {
                 Toast.makeText(this, "As senhas não conferem.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+
             if (!email.contains("@")) {
                 Toast.makeText(this, "Você precisa inserir um email válido!", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
@@ -46,6 +48,12 @@ class CadastroActivity : AppCompatActivity() {
 
             Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show()
 
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        tvFacaLogin.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()

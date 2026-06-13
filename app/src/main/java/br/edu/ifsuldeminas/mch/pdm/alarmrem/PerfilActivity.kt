@@ -15,8 +15,8 @@ class PerfilActivity : AppCompatActivity() {
         val tvEmailUsuario = findViewById<TextView>(R.id.tvEmailUsuario)
         val btnSair = findViewById<Button>(R.id.btnSair)
 
-        tvNomeUsuario.text = FakeUserStore.nome
-        tvEmailUsuario.text = FakeUserStore.email
+        tvNomeUsuario.text = FakeUserStore.nome ?: "Usuário não identificado"
+        tvEmailUsuario.text = FakeUserStore.email ?: "E-mail não informado"
 
         btnSair.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)

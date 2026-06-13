@@ -5,15 +5,15 @@
     android:layout_marginBottom="12dp"
     android:orientation="horizontal"
     android:padding="16dp"
-    android:background="@android:color/white">
+    android:background="@color/white">
 
     <ImageView
         android:id="@+id/imgMedicamentoItem"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginEnd="16dp"
-        android:scaleType="centerCrop"
         android:contentDescription="Imagem do medicamento"
+        android:scaleType="centerCrop"
         android:src="@android:drawable/ic_menu_gallery" />
 
     <LinearLayout
@@ -27,9 +27,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nome do remédio"
-            android:textStyle="bold"
+            android:textColor="@color/textoEscuro"
             android:textSize="18sp"
-            android:textColor="@color/textoEscuro" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvDescricaoItem"
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:text="08:00"
-            android:textColor="@color/verdePrimario"
+            android:textColor="@color/azulPrimario"
             android:textStyle="bold" />
 
         <TextView
@@ -55,6 +55,7 @@
             android:layout_marginTop="4dp"
             android:text="Seg, Qua, Sex"
             android:textColor="@color/textoSecundario" />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -65,14 +66,22 @@
                 android:id="@+id/btnEditarItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Editar" />
+                android:backgroundTint="@color/alerta"
+                android:text="Editar"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnExcluirItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="Excluir" />
+                android:backgroundTint="@color/vermelhoBotao"
+                android:text="Excluir"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 

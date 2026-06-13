@@ -40,6 +40,21 @@ class AlarmeActivity : AppCompatActivity() {
     private var horaSelecionada: Int = -1
     private var minutoSelecionado: Int = -1
 
+    companion object {
+        private const val KEY_FOTO_URI = "key_foto_uri"
+        private const val KEY_HORA = "key_hora"
+        private const val KEY_MINUTO = "key_minuto"
+        private const val KEY_BTN_HORA_TEXTO = "key_btn_hora_texto"
+        private const val KEY_CB_DOM = "key_cb_dom"
+        private const val KEY_CB_SEG = "key_cb_seg"
+        private const val KEY_CB_TER = "key_cb_ter"
+        private const val KEY_CB_QUA = "key_cb_qua"
+        private const val KEY_CB_QUI = "key_cb_qui"
+        private const val KEY_CB_SEX = "key_cb_sex"
+        private const val KEY_CB_SAB = "key_cb_sab"
+        private const val KEY_CB_TODOS = "key_cb_todos"
+    }
+
     private val cameraPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { concedida ->
             if (concedida) {
@@ -51,16 +66,16 @@ class AlarmeActivity : AppCompatActivity() {
 
     private val tirarFotoLauncher =
         registerForActivityResult(ActivityResultContracts.TakePicture()) { sucesso ->
-            if (sucesso) {
-                fotoUri?.let { uri ->
-                    imgMedicamento.setImageURI(null)
-                    imgMedicamento.setImageURI(uri)
-                    Toast.makeText(this, "Foto capturada com sucesso", Toast.LENGTH_SHORT).show()
-                } ?: run {
-                    Toast.makeText(this, "URI da foto inválida", Toast.LENGTH_SHORT).show()
-                }
+            if (sucesso && fotoUri != null) {
+                imgMedicamento.setImageURI(null)
+                imgMedicamento.setImageURI(fotoUri)
+                Toast.makeText(this, "Foto capturada com sucesso", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this, "Não foi possível tirar a foto", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "Falha ao tirar a foto. Sua hora e demais dados continuam preenchidos.",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
 
@@ -84,7 +99,11 @@ class AlarmeActivity : AppCompatActivity() {
         cbSab = findViewById(R.id.cbSab)
         cbTodos = findViewById(R.id.cbTodos)
 
-        preencherDadosSeForEdicao()
+        if (savedInstanceState != null) {
+            restaurarEstado(savedInstanceState)
+        } else {
+            preencherDadosSeForEdicao()
+        }
 
         btnSelecionarHora.setOnClickListener {
             abrirSeletorDeHora()
@@ -97,6 +116,50 @@ class AlarmeActivity : AppCompatActivity() {
         btnSalvarAlarme.setOnClickListener {
             salvarAlarme()
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        outState.putString(KEY_FOTO_URI, fotoUri?.toString())
+        outState.putInt(KEY_HORA, horaSelecionada)
+        outState.putInt(KEY_MINUTO, minutoSelecionado)
+        outState.putString(KEY_BTN_HORA_TEXTO, btnSelecionarHora.text.toString())
+
+        outState.putBoolean(KEY_CB_DOM, cbDom.isChecked)
+        outState.putBoolean(KEY_CB_SEG, cbSeg.isChecked)
+        outState.putBoolean(KEY_CB_TER, cbTer.isChecked)
+        outState.putBoolean(KEY_CB_QUA, cbQua.isChecked)
+        outState.putBoolean(KEY_CB_QUI, cbQui.isChecked)
+        outState.putBoolean(KEY_CB_SEX, cbSex.isChecked)
+        outState.putBoolean(KEY_CB_SAB, cbSab.isChecked)
+        outState.putBoolean(KEY_CB_TODOS, cbTodos.isChecked)
+    }
+
+    private fun restaurarEstado(savedInstanceState: Bundle) {
+        horaSelecionada = savedInstanceState.getInt(KEY_HORA, -1)
+        minutoSelecionado = savedInstanceState.getInt(KEY_MINUTO, -1)
+
+        val textoHora = savedInstanceState.getString(KEY_BTN_HORA_TEXTO)
+        if (!textoHora.isNullOrEmpty()) {
+            btnSelecionarHora.text = textoHora
+        }
+
+        val fotoUriString = savedInstanceState.getString(KEY_FOTO_URI)
+        if (!fotoUriString.isNullOrEmpty()) {
+            fotoUri = Uri.parse(fotoUriString)
+            imgMedicamento.setImageURI(null)
+            imgMedicamento.setImageURI(fotoUri)
+        }
+
+        cbDom.isChecked = savedInstanceState.getBoolean(KEY_CB_DOM, false)
+        cbSeg.isChecked = savedInstanceState.getBoolean(KEY_CB_SEG, false)
+        cbTer.isChecked = savedInstanceState.getBoolean(KEY_CB_TER, false)
+        cbQua.isChecked = savedInstanceState.getBoolean(KEY_CB_QUA, false)
+        cbQui.isChecked = savedInstanceState.getBoolean(KEY_CB_QUI, false)
+        cbSex.isChecked = savedInstanceState.getBoolean(KEY_CB_SEX, false)
+        cbSab.isChecked = savedInstanceState.getBoolean(KEY_CB_SAB, false)
+        cbTodos.isChecked = savedInstanceState.getBoolean(KEY_CB_TODOS, false)
     }
 
     private fun preencherDadosSeForEdicao() {
@@ -153,8 +216,10 @@ class AlarmeActivity : AppCompatActivity() {
 
     private fun abrirSeletorDeHora() {
         val calendario = Calendar.getInstance()
-        val horaAtual = if (horaSelecionada != -1) horaSelecionada else calendario.get(Calendar.HOUR_OF_DAY)
-        val minutoAtual = if (minutoSelecionado != -1) minutoSelecionado else calendario.get(Calendar.MINUTE)
+        val horaAtual =
+            if (horaSelecionada != -1) horaSelecionada else calendario.get(Calendar.HOUR_OF_DAY)
+        val minutoAtual =
+            if (minutoSelecionado != -1) minutoSelecionado else calendario.get(Calendar.MINUTE)
 
         val timePickerDialog = TimePickerDialog(
             this,
@@ -194,6 +259,11 @@ class AlarmeActivity : AppCompatActivity() {
             return
         }
 
+        if (fotoUri == null) {
+            Toast.makeText(this, "Adicione a foto do remédio", Toast.LENGTH_SHORT).show()
+            return
+        }
+
         val horaFormatada = String.format("%02d:%02d", horaSelecionada, minutoSelecionado)
 
         val resultadoIntent = Intent().apply {
@@ -202,7 +272,7 @@ class AlarmeActivity : AppCompatActivity() {
             putExtra("descricao", descricao)
             putExtra("hora", horaFormatada)
             putExtra("diasSelecionados", diasSelecionados)
-            putExtra("fotoUri", fotoUri?.toString())
+            putExtra("fotoUri", fotoUri.toString())
         }
 
         setResult(RESULT_OK, resultadoIntent)
@@ -249,18 +319,27 @@ class AlarmeActivity : AppCompatActivity() {
     }
 
     private fun abrirCamera() {
-        val arquivoFoto = criarArquivoDeImagem()
+        try {
+            val arquivoFoto = criarArquivoDeImagem()
 
-        fotoUri = FileProvider.getUriForFile(
-            this,
-            "${packageName}.fileprovider",
-            arquivoFoto
-        )
+            fotoUri = FileProvider.getUriForFile(
+                this,
+                "${packageName}.fileprovider",
+                arquivoFoto
+            )
 
-        fotoUri?.let { uri ->
-            tirarFotoLauncher.launch(uri)
-        } ?: run {
-            Toast.makeText(this, "Erro ao criar URI da foto", Toast.LENGTH_SHORT).show()
+            val uri = fotoUri
+            if (uri != null) {
+                tirarFotoLauncher.launch(uri)
+            } else {
+                Toast.makeText(this, "Erro ao criar URI da foto", Toast.LENGTH_SHORT).show()
+            }
+        } catch (e: Exception) {
+            Toast.makeText(
+                this,
+                "Erro ao preparar a câmera: ${e.message}",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 

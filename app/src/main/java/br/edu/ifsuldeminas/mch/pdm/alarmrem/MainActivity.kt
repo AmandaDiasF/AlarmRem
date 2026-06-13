@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         val tvCadastreSe = findViewById<TextView>(R.id.tvCadastreSe)
 
         btnLogin.setOnClickListener {
-          
+
             val email = etEmail.text.toString().trim()
             val senha = etSenha.text.toString().trim()
             if(email.isEmpty() || senha.isEmpty()){

@@ -3,16 +3,21 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="verdePrimario">#2E7D32</color>
-    <color name="verdeClaro">#A5D6A7</color>
+    <color name="azulPrimario">#2F6F7E</color>
+    <color name="azulPrimarioEscuro">#245663</color>
+    <color name="azulClaro">#B7D4DB</color>
+    <color name="acaoFoto">#3A90B6</color>
 
-    <color name="fundoTela">#F5F5F5</color>
+    <color name="fundoTela">#F4F7F8</color>
     <color name="fundoInput">#FFFFFFFF</color>
-    <color name="bordaInput">#BDBDBD</color>
+    <color name="bordaInput">#B8C7CC</color>
 
-    <color name="textoEscuro">#212121</color>
-    <color name="textoSecundario">#757575</color>
-    <color name="textoHint">#616161</color>
+    <color name="textoEscuro">#1F2A30</color>
+    <color name="textoSecundario">#66757B</color>
+    <color name="textoHint">#7A8A90</color>
 
-    <color name="vermelhoBotao">#D32F2F</color>
+    <color name="vermelhoBotao">#C94B4B</color>
+    <color name="sucesso">#4D8B5F</color>
+    <color name="alerta">#D9A441</color>
+
 </resources>

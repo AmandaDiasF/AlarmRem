@@ -20,14 +20,14 @@
             android:layout_height="40dp"
             android:src="@drawable/ic_pessoa"
             android:layout_marginEnd="8dp"
-            app:tint="@color/verdePrimario" />
+            app:tint="@color/azulPrimario" />
 
         <TextView
             android:id="@+id/tvTituloCadastro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/titulo_cadastro"
-            android:textColor="@color/verdePrimario"
+            android:textColor="@color/azulPrimario"
             android:textSize="@dimen/texto_titulo"
             android:textStyle="bold" />
     </LinearLayout>
@@ -42,7 +42,7 @@
         android:inputType="text|textPersonName"
         android:padding="@dimen/padding_medio"
         android:textColor="@color/textoEscuro"
-        android:textColorHint="@color/black"
+        android:textColorHint="@color/textoHint"
         android:textSize="@dimen/texto_normal" />
 
     <EditText
@@ -55,7 +55,7 @@
         android:inputType="textEmailAddress"
         android:padding="@dimen/padding_medio"
         android:textColor="@color/textoEscuro"
-        android:textColorHint="@color/black"
+        android:textColorHint="@color/textoHint"
         android:textSize="@dimen/texto_normal" />
 
     <EditText
@@ -68,7 +68,7 @@
         android:inputType="textPassword"
         android:padding="@dimen/padding_medio"
         android:textColor="@color/textoEscuro"
-        android:textColorHint="@color/black"
+        android:textColorHint="@color/textoHint"
         android:textSize="@dimen/texto_normal" />
 
     <EditText
@@ -81,7 +81,7 @@
         android:inputType="textPassword"
         android:padding="@dimen/padding_medio"
         android:textColor="@color/textoEscuro"
-        android:textColorHint="@color/black"
+        android:textColorHint="@color/textoHint"
         android:textSize="@dimen/texto_normal" />
 
     <Button
@@ -89,7 +89,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/padding_medio"
-        android:backgroundTint="@color/verdePrimario"
+        android:backgroundTint="@color/azulPrimario"
         android:text="@string/btn_cadastrar"
         android:textColor="@color/white" />
 
@@ -100,7 +100,6 @@
         android:gravity="center"
         android:padding="@dimen/padding_pequeno"
         android:text="@string/link_login"
-        android:textColor="@color/verdePrimario"
-        android:textSize="@dimen/texto_pequeno" />
-
-</LinearLayout>
+        android:textColor="@color/azulPrimario"
+        android:textSize="@dimen/texto_pequeno"
+        /></LinearLayout>

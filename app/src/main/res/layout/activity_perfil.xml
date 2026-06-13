@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/padding_grande"
         android:text="@string/titulo_perfil"
-        android:textColor="@color/verdePrimario"
+        android:textColor="@color/azulPrimario"
         android:textSize="@dimen/texto_titulo"
         android:textStyle="bold" />
 
@@ -57,10 +57,12 @@
     <Button
         android:id="@+id/btnSair"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:layout_marginBottom="@dimen/padding_medio"
-        android:backgroundTint="@color/vermelhoBotao"
+        android:backgroundTint="@color/azulClaro"
         android:text="@string/btn_sair"
-        android:textColor="@color/white" />
+        android:textAllCaps="false"
+        android:textColor="@color/textoEscuro"
+        android:textStyle="bold" />
 
 </LinearLayout>
