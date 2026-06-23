@@ -65,4 +65,15 @@
         android:textColor="@color/textoEscuro"
         android:textStyle="bold" />
 
+    <!-- Novo botão: Histórico de Remédios -->
+    <Button
+        android:id="@+id/btnHistoricoRemedios"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:backgroundTint="@color/azulClaro"
+        android:text="@string/btn_historico_remedios"
+        android:textAllCaps="false"
+        android:textColor="@color/textoEscuro"
+        android:textStyle="bold" />
+
 </LinearLayout>

@@ -10,15 +10,11 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
-import android.media.AudioManager
 import android.net.Uri
 import android.os.Build
-import android.os.Bundle
 import android.provider.MediaStore
-import android.speech.tts.TextToSpeech
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
-import java.util.Locale
 
 class AlarmReceiver : BroadcastReceiver() {
 
@@ -62,13 +58,16 @@ class AlarmReceiver : BroadcastReceiver() {
         )
 
         val okIntent = Intent(context, AlarmActionReceiver::class.java).apply {
-            action = "ACTION_OK"
+            action = AlarmActionReceiver.ACTION_OK
             putExtra("notificationId", notificationId)
             putExtra("alarmeId", alarmeId)
+            putExtra("nomeRemedio", nome)
+            putExtra("descricao", descricao)
+            putExtra("fotoUri", fotoUriString)
         }
 
         val adiarIntent = Intent(context, AlarmActionReceiver::class.java).apply {
-            action = "ACTION_ADIAR"
+            action = AlarmActionReceiver.ACTION_ADIAR
             putExtra("notificationId", notificationId)
             putExtra("alarmeId", alarmeId)
             putExtra("nomeRemedio", nome)
@@ -137,7 +136,7 @@ class AlarmReceiver : BroadcastReceiver() {
         } catch (_: Exception) {
         }
 
-        falarDescricao(context, nome, descricao)
+        AlarmAudioManager.falar(context, nome, descricao)
     }
 
     private fun carregarBitmap(context: Context, fotoUriString: String?): Bitmap? {
@@ -154,48 +153,6 @@ class AlarmReceiver : BroadcastReceiver() {
             }
         } catch (e: Exception) {
             null
-        }
-    }
-
-    private fun falarDescricao(context: Context, nome: String, descricao: String) {
-        val textoFalado = "Atenção, hora de tomar: $nome. $descricao"
-
-        lateinit var tts: TextToSpeech
-
-        tts = TextToSpeech(context.applicationContext) { status ->
-            if (status == TextToSpeech.SUCCESS) {
-                val resultadoIdioma = tts.setLanguage(Locale("pt", "BR"))
-
-                if (resultadoIdioma != TextToSpeech.LANG_MISSING_DATA &&
-                    resultadoIdioma != TextToSpeech.LANG_NOT_SUPPORTED
-                ) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        val params = Bundle().apply {
-                            putInt(TextToSpeech.Engine.KEY_PARAM_STREAM, AudioManager.STREAM_ALARM)
-                            putFloat(TextToSpeech.Engine.KEY_PARAM_VOLUME, 1.0f)
-                        }
-
-                        tts.speak(
-                            textoFalado,
-                            TextToSpeech.QUEUE_FLUSH,
-                            params,
-                            "alarmrem_tts_1"
-                        )
-
-                        tts.speak(
-                            textoFalado,
-                            TextToSpeech.QUEUE_ADD,
-                            params,
-                            "alarmrem_tts_2"
-                        )
-                    } else {
-                        @Suppress("DEPRECATION")
-                        tts.speak(textoFalado, TextToSpeech.QUEUE_FLUSH, null)
-                        @Suppress("DEPRECATION")
-                        tts.speak(textoFalado, TextToSpeech.QUEUE_ADD, null)
-                    }
-                }
-            }
         }
     }
 }

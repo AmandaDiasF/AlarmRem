@@ -14,6 +14,7 @@ class PerfilActivity : AppCompatActivity() {
         val tvNomeUsuario = findViewById<TextView>(R.id.tvNomeUsuario)
         val tvEmailUsuario = findViewById<TextView>(R.id.tvEmailUsuario)
         val btnSair = findViewById<Button>(R.id.btnSair)
+        val btnHistorico = findViewById<Button>(R.id.btnHistoricoRemedios)
 
         tvNomeUsuario.text = FakeUserStore.nome ?: "Usuário não identificado"
         tvEmailUsuario.text = FakeUserStore.email ?: "E-mail não informado"
@@ -23,6 +24,11 @@ class PerfilActivity : AppCompatActivity() {
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
             finish()
+        }
+
+        btnHistorico.setOnClickListener {
+            val intent = Intent(this, HistoricoRemediosActivity::class.java)
+            startActivity(intent)
         }
     }
 }

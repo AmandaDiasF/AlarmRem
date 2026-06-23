@@ -1,5 +1,6 @@
 package br.edu.ifsuldeminas.mch.pdm.alarmrem
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AlarmManager
 import android.app.NotificationManager
@@ -128,16 +129,12 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("ScheduleExactAlarm")
     private fun agendarAlarme(alarme: Alarme) {
         val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S &&
-            !alarmManager.canScheduleExactAlarms()
-        ) {
-            val intent = Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM)
-            startActivity(intent)
-            return
-        }
+        // A essa altura, a MainActivity já tratou canScheduleExactAlarms().
+        // Aqui não abrimos mais tela de permissão para não quebrar o fluxo.
 
         val partesHora = alarme.hora.split(":")
         if (partesHora.size != 2) return

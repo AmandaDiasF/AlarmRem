@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/fundoTela"
+    android:padding="@dimen/padding_grande">
+
+    <TextView
+        android:id="@+id/tvTituloHistorico"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/padding_grande"
+        android:text="Histórico de remédios"
+        android:textColor="@color/azulPrimario"
+        android:textSize="@dimen/texto_titulo"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvMensagemVazio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/padding_medio"
+        android:text="Você ainda não tomou nenhum remédio."
+        android:textColor="@color/textoSecundario"
+        android:textSize="@dimen/texto_normal"
+        android:visibility="gone" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvHistorico"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/btnVoltarHistorico"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="@dimen/padding_medio"
+        android:backgroundTint="@color/azulClaro"
+        android:text="Voltar"
+        android:textAllCaps="false"
+        android:textColor="@color/textoEscuro"
+        android:textStyle="bold" />
+
+</LinearLayout>

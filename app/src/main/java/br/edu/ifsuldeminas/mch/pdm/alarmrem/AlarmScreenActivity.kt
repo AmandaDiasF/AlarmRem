@@ -56,12 +56,23 @@ class AlarmScreenActivity : AppCompatActivity() {
             val notificationManager =
                 getSystemService(NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.cancel(notificationId)
+
+            val intentOk = Intent(this, AlarmActionReceiver::class.java).apply {
+                action = AlarmActionReceiver.ACTION_OK
+                putExtra("notificationId", notificationId)
+                putExtra("alarmeId", alarmeId)
+                putExtra("nomeRemedio", nome)
+                putExtra("descricao", descricao)
+                putExtra("fotoUri", fotoUri)
+            }
+            sendBroadcast(intentOk)
+
             finish()
         }
 
         btnAdiar.setOnClickListener {
             val intentAdiar = Intent(this, AlarmActionReceiver::class.java).apply {
-                action = "ACTION_ADIAR"
+                action = AlarmActionReceiver.ACTION_ADIAR
                 putExtra("notificationId", notificationId)
                 putExtra("alarmeId", alarmeId)
                 putExtra("nomeRemedio", nome)

@@ -12,6 +12,7 @@ import android.os.Build
 class AlarmActionReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
+        // Para o áudio sempre que uma ação é recebida
         AlarmAudioManager.parar()
 
         val action = intent.action
@@ -27,6 +28,19 @@ class AlarmActionReceiver : BroadcastReceiver() {
         when (action) {
             ACTION_OK -> {
                 notificationManager.cancel(notificationId)
+
+                val agora = java.text.SimpleDateFormat(
+                    "dd/MM/yyyy HH:mm",
+                    java.util.Locale("pt", "BR")
+                ).format(java.util.Date())
+
+                val item = HistoricoItem(
+                    nomeRemedio = nome,
+                    descricao = descricao,
+                    dataHoraConclusao = agora
+                )
+
+                HistoricoStorage.adicionarRegistro(context, item)
             }
 
             ACTION_ADIAR -> {
@@ -60,13 +74,16 @@ class AlarmActionReceiver : BroadcastReceiver() {
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
+        // Garante que não haja alarme duplicado
         alarmManager.cancel(pendingIntent)
 
         val triggerAtMillis = System.currentTimeMillis() + 5 * 60 * 1000L
 
+        // Android 12+ - verificar se pode agendar exato
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S &&
             !alarmManager.canScheduleExactAlarms()
         ) {
+            // Fallback recomendado pela documentação: usar setAndAllowWhileIdle
             alarmManager.setAndAllowWhileIdle(
                 AlarmManager.RTC_WAKEUP,
                 triggerAtMillis,
@@ -75,6 +92,7 @@ class AlarmActionReceiver : BroadcastReceiver() {
             return
         }
 
+        // Android M+ com alarme exato e respeitando Doze
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             alarmManager.setExactAndAllowWhileIdle(
                 AlarmManager.RTC_WAKEUP,
